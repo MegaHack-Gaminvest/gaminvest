@@ -13,7 +13,7 @@ defmodule GaminvestWeb.ChallengeLive do
     socket = socket
       |> assign(:daily_challenge, daily_challenge)
       |> assign(:leaderboard_list, ChallengeContext.leaderboard_list())
-      |> assign(socket, :page_title, "Desafios")
+      |> assign(:page_title, "Desafios")
     {:ok, socket, temporary_assigns: [leaderboard_list: []]}
   end
 

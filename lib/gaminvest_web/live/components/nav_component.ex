@@ -11,7 +11,7 @@ defmodule GaminvestWeb.NavComponent do
           <div class="navbar-item__icon">
             <%= live_redirect to: Routes.live_path(@socket, GaminvestWeb.ChallengeLive, classname: @classname) do %>
               <i class="fa fa-trophy fa-lg"></i>
-            <%= end %>
+            <% end %>
           </div>
           <div class="navbar-item__name">
             Desafios
@@ -23,19 +23,19 @@ defmodule GaminvestWeb.NavComponent do
             <div class="navbar-item__icon">
               <%= live_redirect to: Routes.live_path(@socket, GaminvestWeb.ModuleLive, classname: @classname) do %>
                 <i class="fa fa-book fa-lg"></i>
-              <%= end %>
+              <% end %>
             </div>
             <div class="navbar-item__name">
               Módulos
             </div>
           </div>
-        
+
         <!-- Home -->
         <div class="navbar__item navbar-item <%= if @page_title == "Home", do: "navbar-item--selected" %>">
           <div class="navbar-item__icon">
             <%= live_redirect to: Routes.live_path(@socket, GaminvestWeb.HomeLive, classname: @classname) do %>
               <i class="fa fa-home fa-lg"></i>
-            <%= end %>
+            <% end %>
           </div>
           <div class="navbar-item__name">
             Home
@@ -47,7 +47,7 @@ defmodule GaminvestWeb.NavComponent do
           <div class="navbar-item__icon">
             <%= live_redirect to: Routes.live_path(@socket, GaminvestWeb.SavingsLive, classname: @classname) do %>
               <i class="fa fa-wallet fa-lg"></i>
-            <%= end %>
+            <% end %>
           </div>
           <div class="navbar-item__name">
             Poupança
@@ -59,7 +59,7 @@ defmodule GaminvestWeb.NavComponent do
             <div class="navbar-item__icon">
               <%= live_redirect to: Routes.live_path(@socket, GaminvestWeb.ProfileLive, classname: @classname) do %>
                 <i class="fa fa-user fa-lg"></i>
-              <%= end %>
+              <% end %>
             </div>
             <div class="navbar-item__name">
               Perfil
