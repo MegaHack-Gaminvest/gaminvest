@@ -1,0 +1,6 @@
+<h1>Poupança</h1>
+<div class="money">
+    <%= money_format(@human.savings.amount) %>
+</div>
+
+<%= live_component @socket, GaminvestWeb.NavComponent %>

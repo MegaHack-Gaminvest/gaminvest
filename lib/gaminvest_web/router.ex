@@ -7,6 +7,7 @@ defmodule GaminvestWeb.Router do
     plug :fetch_flash
     plug :protect_from_forgery
     plug :put_secure_browser_headers
+    plug :put_root_layout, {GaminvestWeb.LayoutView, "root.html"}
   end
 
   pipeline :api do
@@ -16,7 +17,23 @@ defmodule GaminvestWeb.Router do
   scope "/", GaminvestWeb do
     pipe_through :browser
 
-    get "/", PageController, :index
+    live "/", HomeLive
+    live "/challenges", ChallengeLive
+    live "/modules", ModuleLive
+    live "/savings", SavingsLive
+    #live "/profile", ProfileLive
+  end
+
+  scope "/api", GaminvestWeb.API do
+    pipe_through :api
+
+    resources "/modules", ModuleController, except: [:new, :edit]
+    resources "/humans", HumanController, except: [:new, :edit]
+  end
+
+  scope "/api", GaminvestWeb.API do
+    pipe_through :api
+    post "/lesson/{id}/completion", ModulePointsController, :completion
   end
 
   # Other scopes may use custom stacks.

@@ -14,7 +14,9 @@ import "../css/app.scss"
 //
 import "phoenix_html"
 
-import * as React from 'react';
-import * as ReactDOM from 'react-dom';
+import {Socket} from "phoenix"
+import LiveSocket from "phoenix_live_view"
 
-ReactDOM.render(<h1>Hello, world!</h1>, document.getElementById('root'))
+let csrfToken = document.querySelector("meta[name='csrf-token']").getAttribute("content")
+let liveSocket = new LiveSocket("/live", Socket, {params: {_csrf_token: csrfToken}})
+liveSocket.connect()

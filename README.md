@@ -1,18 +1,95 @@
 # Gaminvest
 
-To start your Phoenix server:
+# Modules
 
-  * Setup the project with `mix setup`
-  * Start Phoenix endpoint with `mix phx.server`
+- Name
+- Description
+- Order: integer
+- Score (computed from phases)
+- 1:N Phases
+  - Name
+  - Content
+  - Score
+- 1:1 Survey
+- 1:1 Module (Next Module)
 
-Now you can visit [`localhost:4000`](http://localhost:4000) from your browser.
+# Achievement
 
-Ready to run in production? Please [check our deployment guides](https://hexdocs.pm/phoenix/deployment.html).
+- Extra Points
+- Name
+- Image URL
 
-## Learn more
+# Survey
 
-  * Official website: https://www.phoenixframework.org/
-  * Guides: https://hexdocs.pm/phoenix/overview.html
-  * Docs: https://hexdocs.pm/phoenix
-  * Forum: https://elixirforum.com/c/phoenix-forum
-  * Source: https://github.com/phoenixframework/phoenix
+- Name
+- 1:N Questions
+
+# Question
+
+- Content
+- Correct Option ID
+- 1:N Options
+
+# Option
+
+- Content
+
+# Human
+
+- Name
+- External ID
+
+# Human Phases
+
+- Human ID
+- Phase ID
+- Status
+
+# Human Achievements 
+
+- Human ID
+- Achievement ID
+
+# Human Points
+
+- Human ID
+- Points
+- Points Added Date
+
+# Human Conversions
+
+- Human ID
+- Amount Of Points Converted
+- Amount Of Money Converted
+- Conversion Date
+
+# Human Savings
+
+- Human ID
+- Amount
+
+totalPoints = humanPoints - amountOfPointsConverted
+totalMoney = moneyConverted
+
+{
+  "user": {
+    "name": "blah",
+    ...
+  },
+  "achievements": [
+    {
+      "id": "<uuid>",
+      "name": "Tal",
+      "description": "blabla",
+    },
+    ...
+  ],
+  "completedModules": [
+    {
+      "id": "<uuid>>,
+      "name": "Básico",
+      "description": "Neste módulo...",
+    },
+    ...
+  ]
+}
