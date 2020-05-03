@@ -5,20 +5,31 @@ defmodule GaminvestWeb.NavComponent do
     ~L"""
     <nav class="navbar">
       <ul>
+
           <li>
-            <%= live_redirect "Home", to: Routes.live_path(@socket, GaminvestWeb.HomeLive) %>
+            <%= live_redirect to: Routes.live_path(@socket, GaminvestWeb.ChallengeLive) do %>
+              <i class="fa fa-trophy"></i>
+            <%= end %>
           </li>
           <li>
-            <%= live_redirect "Desafios", to: Routes.live_path(@socket, GaminvestWeb.ChallengeLive) %>
+            <%= live_redirect  to: Routes.live_path(@socket, GaminvestWeb.ModuleLive) do %>
+              <i class="fas fa-book"></i>
+            <% end %>
           </li>
           <li>
-            <%= live_redirect "Módulos", to: Routes.live_path(@socket, GaminvestWeb.ModuleLive) %>
+            <%= live_redirect to: Routes.live_path(@socket, GaminvestWeb.HomeLive) do %>
+              <i class="fa fa-home"></i>
+            <% end %>
           </li>
           <li>
-            <%= live_redirect "Poupança", to: Routes.live_path(@socket, GaminvestWeb.SavingsLive) %>
+            <%= live_redirect to: Routes.live_path(@socket, GaminvestWeb.SavingsLive) do %>
+              <i class="fas fa-wallet"></i>
+            <% end %>
           </li>
           <li>
-            <%= live_redirect "Perfil", to: Routes.live_path(@socket, GaminvestWeb.ProfileLive) %>
+            <%= live_redirect to: Routes.live_path(@socket, GaminvestWeb.ProfileLive) do %>
+              <i class="fa fa-user"></i>
+            <% end %>
           </li>
       </ul>
     </nav>

@@ -9,7 +9,7 @@ defmodule GaminvestWeb.ProfileLive do
     ~L"""
     <h1>Perfil</h1>
 
-    <%= live_component @socket, Gaminvest.NavComponent %>
+    <%= live_component @socket, GaminvestWeb.NavComponent %>
     """
   end
 end

@@ -5,11 +5,4 @@ defmodule GaminvestWeb.ChallengeLive do
     {:ok, socket}
   end
 
-  def render(assigns) do
-    ~L"""
-    <h1>Desafios</h1>
-
-    <%= live_component @socket, GaminvestWeb.NavComponent %>
-    """
-  end
 end
