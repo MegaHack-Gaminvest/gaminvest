@@ -7,7 +7,6 @@ defmodule Gaminvest.HumanContext.Human do
   @primary_key {:id, :binary_id, autogenerate: true}
 
   schema "humans" do
-    field :external_id, :string
     field :name, :string
     has_one :savings, {"human_savings", Savings}
 
@@ -17,8 +16,8 @@ defmodule Gaminvest.HumanContext.Human do
   @doc false
   def changeset(human, attrs) do
     human
-    |> cast(attrs, [:name, :external_id])
+    |> cast(attrs, [:name])
     |> cast_assoc(:savings)
-    |> validate_required([:name, :external_id])
+    |> validate_required([:name])
   end
 end

@@ -61,7 +61,7 @@ defmodule Gaminvest.HumanContext do
     |> Human.changeset(attrs)
     |> Repo.insert()
 
-    savings = Ecto.build_assoc(human, :savings, %{amount: 0.0})
+    savings = Ecto.build_assoc(human, :savings, %{amount: 1000.0})
     Repo.insert(savings)
     {:ok, %Human{human | savings: savings}}
   end

@@ -17,6 +17,9 @@ defmodule GaminvestWeb.NavComponent do
           <li>
             <%= live_redirect "Poupança", to: Routes.live_path(@socket, GaminvestWeb.SavingsLive) %>
           </li>
+          <li>
+            <%= live_redirect "Perfil", to: Routes.live_path(@socket, GaminvestWeb.ProfileLive) %>
+          </li>
       </ul>
     </nav>
     """

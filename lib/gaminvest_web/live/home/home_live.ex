@@ -3,18 +3,19 @@ defmodule GaminvestWeb.HomeLive do
 
   alias Gaminvest.HumanContext
 
-  def mount(_params, _state, socket) do
+  def mount(_params, %{"human_id" => human_id}, socket) do
+    IO.puts("human_id: #{inspect human_id}")
     socket = socket
-    |> assign(:human, fetch_human())
+    |> assign(:human, fetch_human(human_id))
     {:ok, socket}
   end
 
-  def fetch_human do
-    HumanContext.get_human!("4c3003cc-f2c5-485d-a7d5-ae17d3a8d9e3")
+  def fetch_human(id) do
+    HumanContext.get_human!(id)
   end
 
   def money_format(amount) do
-    "R$ #{amount}"
+    "R$ #{:erlang.float_to_binary(amount, [decimals: 2])}"
   end
 
 end

@@ -8,7 +8,9 @@ defmodule GaminvestWeb.Router do
     plug :protect_from_forgery
     plug :put_secure_browser_headers
     plug :put_root_layout, {GaminvestWeb.LayoutView, "root.html"}
+    plug GaminvestWeb.Plugs.CreateRandomUser
   end
+
 
   pipeline :api do
     plug :accepts, ["json"]
@@ -17,12 +19,14 @@ defmodule GaminvestWeb.Router do
   scope "/", GaminvestWeb do
     pipe_through :browser
 
+
     live "/", HomeLive
     live "/challenges", ChallengeLive
     live "/modules", ModuleLive
     live "/savings", SavingsLive
-    #live "/profile", ProfileLive
+    live "/profile", ProfileLive
   end
+
 
   scope "/api", GaminvestWeb.API do
     pipe_through :api
