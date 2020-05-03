@@ -189,6 +189,16 @@ main {
   }
 }
 
+.modules-page {
+  &__item {
+    margin-top: 12px;
+
+    &:last-child {
+      margin-bottom: 12px;
+    }
+  }
+}
+
 .module {
   display: flex;
   padding: 24px 24px;
@@ -196,6 +206,28 @@ main {
   box-sizing: border-box;
   flex-direction: column;
   border: 1px solid #e9eaed;
+
+  &--locked {
+    background-color: #e9eaed;
+  }
+
+  &__disclaimer {
+    display: none;
+
+    &--visible {
+      &.module {
+        &__disclaimer {
+          display: flex;
+          font-size: 9px;
+          margin-top: 10px;
+          color: #9d9ea1;
+          line-height: 11px;
+          justify-content: center;
+          font-family: "Source Sans Pro", sans-serif;
+        }
+      }
+    }
+  }
 
   &__header {
     flex: 1;
@@ -222,6 +254,21 @@ main {
     width: 160px;
     text-align: center;
     align-self: center;
+
+    &--locked {
+      &.button {
+        &:hover {
+          background-color: #e9eaed;
+        }
+      }
+
+      &.module {
+        &__button {
+          color: #9d9ea1;
+          border-color: #9d9ea1;
+        }
+      }
+    }
   }
 }
 
