@@ -9,7 +9,7 @@ defmodule GaminvestWeb.NavComponent do
         <!-- Challenges -->
         <div class="navbar__item navbar-item <%= if @page_title == "Desafios", do: "navbar-item--selected" %>">
           <div class="navbar-item__icon">
-            <%= live_redirect to: Routes.live_path(@socket, GaminvestWeb.ChallengeLive, classname: @classname) do %>
+            <%= live_redirect to: Routes.live_path(@socket, GaminvestWeb.ChallengeLive) do %>
               <i class="fa fa-trophy fa-lg"></i>
             <% end %>
           </div>
@@ -21,7 +21,7 @@ defmodule GaminvestWeb.NavComponent do
         <!-- Modules -->
           <div class="navbar__item navbar-item <%= if @page_title == "Módulos", do: "navbar-item--selected" %>">
             <div class="navbar-item__icon">
-              <%= live_redirect to: Routes.live_path(@socket, GaminvestWeb.ModuleLive, classname: @classname) do %>
+              <%= live_redirect to: Routes.live_path(@socket, GaminvestWeb.ModuleLive) do %>
                 <i class="fa fa-book fa-lg"></i>
               <% end %>
             </div>
@@ -33,7 +33,7 @@ defmodule GaminvestWeb.NavComponent do
         <!-- Home -->
         <div class="navbar__item navbar-item <%= if @page_title == "Home", do: "navbar-item--selected" %>">
           <div class="navbar-item__icon">
-            <%= live_redirect to: Routes.live_path(@socket, GaminvestWeb.HomeLive, classname: @classname) do %>
+            <%= live_redirect to: Routes.live_path(@socket, GaminvestWeb.HomeLive) do %>
               <i class="fa fa-home fa-lg"></i>
             <% end %>
           </div>
@@ -45,7 +45,7 @@ defmodule GaminvestWeb.NavComponent do
         <!-- Wallet -->
         <div class="navbar__item navbar-item <%= if @page_title == "Poupança", do: "navbar-item--selected" %>">
           <div class="navbar-item__icon">
-            <%= live_redirect to: Routes.live_path(@socket, GaminvestWeb.SavingsLive, classname: @classname) do %>
+            <%= live_redirect to: Routes.live_path(@socket, GaminvestWeb.SavingsLive) do %>
               <i class="fa fa-wallet fa-lg"></i>
             <% end %>
           </div>
@@ -57,7 +57,7 @@ defmodule GaminvestWeb.NavComponent do
         <!-- Profile -->
           <div class="navbar__item navbar-item <%= if @page_title == "Perfil", do: "navbar-item--selected" %>">
             <div class="navbar-item__icon">
-              <%= live_redirect to: Routes.live_path(@socket, GaminvestWeb.ProfileLive, classname: @classname) do %>
+              <%= live_redirect to: Routes.live_path(@socket, GaminvestWeb.ProfileLive) do %>
                 <i class="fa fa-user fa-lg"></i>
               <% end %>
             </div>
