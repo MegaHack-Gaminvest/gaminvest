@@ -189,6 +189,75 @@ main {
   }
 }
 
+.module {
+  display: flex;
+  padding: 24px 24px;
+  border-radius: 16px;
+  box-sizing: border-box;
+  flex-direction: column;
+  border: 1px solid #e9eaed;
+
+  &__header {
+    flex: 1;
+    display: flex;
+    justify-content: space-between;
+  }
+
+  &__title {
+    font-size: 24px;
+    font-weight: 700;
+    line-height: 32px;
+    font-family: "Montserrat", sans-serif;
+  }
+
+  &__description {
+    font-size: 18px;
+    margin-top: 6px;
+    line-height: 23px;
+    margin-bottom: 50px;
+    font-family: "Source Sans Pro", sans-serif;
+  }
+
+  &__button {
+    width: 160px;
+    text-align: center;
+    align-self: center;
+  }
+}
+
+.button {
+  font-size: 14px;
+  font-weight: 600;
+  color: #30ab70;
+  line-height: 17px;
+  padding: 8px 24px;
+  border-radius: 16px;
+  box-sizing: border-box;
+  border: 1px solid #30ab70;
+  font-family: "Montserrat", sans-serif;
+  transition: background-color 400ms ease-in-out;
+
+  &:hover {
+    background-color: rgba(#30ab70, 0.25);
+  }
+}
+
+.score-minimal {
+  &__amount {
+    font-size: 18px;
+    font-weight: bold;
+    font-family: "Montserrat", sans-serif;
+  }
+
+  &__label {
+    font-size: 10px;
+    text-align: right;
+    line-height: 10px;
+    font-weight: normal;
+    font-family: "Source Sans Pro", sans-serif;
+  }
+}
+
 .alert {
   padding: 15px;
   margin-bottom: 20px;
@@ -222,6 +291,7 @@ h1 {
   font-family: "Montserrat", sans-serif;
   font-weight: bold;
 }
+
 p {
   font-family: "Montserrat", sans-serif;
   font-size: 18px;
