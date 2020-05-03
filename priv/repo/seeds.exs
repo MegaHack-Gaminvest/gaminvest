@@ -12,3 +12,14 @@
 
 alias Gaminvest.Repo
 alias Gaminvest.ModuleContext.{Module, Phase}
+alias Gaminvest.ChallengeContext
+alias Gaminvest.ChallengeContext.Challenge
+
+Repo.insert! %Challenge{title: "Fundos imobiliários FTW!", content: """
+Invista mais rápido para ganhar recompensas!
+<ul>
+  <li>Primeiros 10 a comprar o FI ABCP11: 50 pontos</li>
+  <li>Primeiros 25 a comprar o FI ABCP11: 25 pontos</li>
+  <li>Recompensa normal: 10 pontos</li>
+</ul>
+"""}

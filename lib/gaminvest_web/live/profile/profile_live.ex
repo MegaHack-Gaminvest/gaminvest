@@ -7,7 +7,6 @@ defmodule GaminvestWeb.ProfileLive do
 
   def render(assigns) do
     ~L"""
-    
     """
   end
 end

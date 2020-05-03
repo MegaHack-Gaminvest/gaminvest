@@ -14,7 +14,8 @@ defmodule Gaminvest.Application do
       # Start the PubSub system
       {Phoenix.PubSub, name: Gaminvest.PubSub},
       # Start the Endpoint (http/https)
-      GaminvestWeb.Endpoint
+      GaminvestWeb.Endpoint,
+      GaminvestWeb.Presence
       # Start a worker by calling: Gaminvest.Worker.start_link(arg)
       # {Gaminvest.Worker, arg}
     ]
