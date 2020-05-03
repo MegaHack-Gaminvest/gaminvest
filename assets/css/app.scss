@@ -14,14 +14,14 @@ body {
 
 main {
   margin: 0;
-  height: 100vh;
   width: 100vw;
+  height: 100vh;
 }
 
 .layout {
   height: 100vh;
   display: grid;
-  grid-template-columns: 24px minmax(100%, 768px) 24px;
+  grid-template-columns: 24px auto 24px;
   grid-template-rows: 80px auto 80px;
   grid-template-areas:
     "header header header"
