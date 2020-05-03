@@ -18,6 +18,13 @@ main {
   height: 100vh;
 }
 
+.card {
+  padding: 16px;
+  border-radius: 16px;
+  box-sizing: border-box;
+  border: 1px solid #e9eaed;
+}
+
 .layout {
   height: 100vh;
   display: grid;
@@ -118,13 +125,68 @@ main {
   }
 }
 
-.money {
+.projection-card {
+  padding: 24px 24px;
+  border-radius: 16px;
+  box-sizing: border-box;
+  border: 1px solid #e9eaed;
+
+  &__divider {
+    height: 1px;
+    margin: 16px 0px;
+    box-sizing: border-box;
+    background-color: #e9eaed;
+  }
+
+  &__detail {
+    margin-top: 22px;
+  }
+}
+
+.money-highlight {
+  text-align: center;
   font-family: "Montserrat", sans-serif;
-  color: #30ab70;
-  font-weight: bold;
-  font-size: 36px;
-  line-height: 44px;
-  position: absolute;
+
+  &__label {
+    font-size: 18px;
+    font-weight: 700;
+    margin-bottom: 8px;
+  }
+
+  &__amount {
+    font-size: 36px;
+    color: #30ab70;
+    font-weight: 700;
+    line-height: 44px;
+  }
+}
+
+.money-details {
+  font-size: 14px;
+  text-align: center;
+  font-family: "Source Sans Pro", sans-serif;
+
+  &__label {
+    line-height: 18px;
+  }
+
+  &__amount {
+    line-height: 24px;
+    font-weight: 700;
+  }
+}
+
+.home {
+  height: 100%;
+  display: flex;
+  flex-direction: column;
+
+  &__chart {
+    flex: 1;
+    height: 100%;
+    margin: 32px 0;
+    position: relative;
+  }
 }
 
 .alert {

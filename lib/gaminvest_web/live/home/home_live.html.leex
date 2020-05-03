@@ -1,12 +1,40 @@
-<div class="money">
-<%= money_format(@human.savings.amount) %>
+<div class="home">
+    <div class="home__card projection-card">
+        <div class="projection-card__amount money-highlight">
+            <div class="money-highlight__label">
+                Poupança
+            </div>
+
+            <div class="money-highlight__amount">
+                <%= money_format(@human.savings.amount) %>
+            </div>
+        </div>
+
+        <div class="projection-card__divider">
+        </div>
+
+        <div class="projection-card__detail money-details">
+            <div class="money-details__label">
+                Rendimento projetado
+            </div>
+
+            <div class="money-details__amount">
+                <%= money_format(0.24 * @human.savings.amount) %> a.m.
+            </div>
+        </div>
+
+        <div class="projection-card__detail money-details">
+            <div class="money-details__label">
+                Percentual de rendimento
+            </div>
+
+            <div class="money-details__amount">
+                0,24% a.m.
+            </div>
+        </div>
+    </div>
+
+    <div class="home__chart chart-container">
+        <canvas id="home-chart" phx-hook="HomeChart" data-savings="<%= Jason.encode! [1002.40,1004.80,1007.20,1009.60,1012.00,1014.40,1016.80,1019.20,1021.60,1024.00] %>"></canvas>
+    </div>
 </div>
-
-<h2>Rendimento projetado</h2>
-<p><%= money_format(0.24 * @human.savings.amount) %> a.m.</p>
-
-<h2>Percentual de rendimento</h2>
-<p>0,24% a.m.</p>
-
-
-<canvas id="home-chart" width="1000" height="500" phx-hook="HomeChart" data-savings="<%= Jason.encode! [1002.40,1004.80,1007.20,1009.60,1012.00,1014.40,1016.80,1019.20,1021.60,1024.00] %>"></canvas>
