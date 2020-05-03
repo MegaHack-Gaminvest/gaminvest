@@ -7,6 +7,7 @@ defmodule GaminvestWeb.HomeLive do
     IO.puts("human_id: #{inspect human_id}")
     socket = socket
     |> assign(:human, fetch_human(human_id))
+    |> assign(:page_title, "Home")
     {:ok, socket}
   end
 

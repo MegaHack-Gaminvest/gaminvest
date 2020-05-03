@@ -1,3 +1,9 @@
-<p><%= live_flash(@flash, :notice) %></p>
-<p><%= live_flash(@flash, :error) %></p>
-<%= @inner_content %>
+<div class="layout">
+    <%= live_component @socket, GaminvestWeb.HeaderComponent, classname: "layout__header", page_title: @page_title %>
+
+    <div class="layout__main">
+        <%= @inner_content %>
+    </div>
+
+    <%= live_component @socket, GaminvestWeb.NavComponent, classname: "layout__navbar", page_title: @page_title %>
+</div>
