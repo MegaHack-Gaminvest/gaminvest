@@ -1,5 +1,6 @@
 defmodule Gaminvest.ModuleContext.HumanPhases do
   use Ecto.Schema
+  import Ecto.Changeset
 
   alias Gaminvest.HumanContext.Human
   alias Gaminvest.ModuleContext.Phase
@@ -10,5 +11,11 @@ defmodule Gaminvest.ModuleContext.HumanPhases do
     field :status, :string
     belongs_to :human, Human, type: :binary_id
     belongs_to :phase, Phase, type: :binary_id
+  end
+
+  def changeset(struct, attrs) do
+    struct
+    |> cast(attrs, [:status, :human_id, :phase_id])
+    |> validate_required([:status, :human_id, :phase_id])
   end
 end

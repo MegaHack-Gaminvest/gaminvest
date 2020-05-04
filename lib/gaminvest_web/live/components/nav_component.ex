@@ -21,7 +21,7 @@ defmodule GaminvestWeb.NavComponent do
         <!-- Modules -->
           <div class="navbar__item navbar-item <%= if @page_title == "Módulos", do: "navbar-item--selected" %>">
             <div class="navbar-item__icon">
-              <%= live_redirect to: Routes.live_path(@socket, GaminvestWeb.ModuleLive) do %>
+              <%= live_redirect to: Routes.module_path(@socket, :index) do %>
                 <i class="fa fa-book fa-lg"></i>
               <% end %>
             </div>

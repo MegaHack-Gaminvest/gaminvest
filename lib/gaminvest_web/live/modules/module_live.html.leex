@@ -1,36 +1,57 @@
-<div class="modules-page">
-    <%= for module <- @progress.modules do %>
-        <% is_this_module_locked? = is_module_locked?(@progress, {module.id, module.order}) %>
-        <div class="modules-page__item module <%= if is_this_module_locked?, do: "module--locked" %>">
-
-            <div class="module__header">
-                <div class="module__title">
-                    <%= module.name %>
-                </div>
-
-                <div class="module__score score-minimal <%= if is_this_module_locked?, do: "score-minimal--locked" %>">
-                    <div class="score-minimal__amount">
-                        <%= module.score %>
-                    </div>
-                    <div class="score-minimal__label">
-                        Pontos
-                    </div>
-                </div>
-            </div>
-
-            <div class="module__description">
-                <%= module.description %>
-            </div>
-
-            <div class="module__button button <%= if is_this_module_locked?, do: "module__button--locked" %>">
-                <%= button_text(@progress, {module.id, module.order}) %>
-            </div>
-
-            <%= if is_this_module_locked? do %>
-                <div class="module__disclaimer module__disclaimer--visible">
-                    Desbloqueie terminando o módulo anterior
-                </div>
-            <% end %>
+<%= if @live_action == :show_phase do %>
+    <div class="modules-page">
+        <div class="module__description">
+            <%= raw @phase.content %>
         </div>
-    <% end %>
-</div>
+        <button class="module__button button" phx-click="module-next" phx-value-module_id="<%= @phase.module_id %>">
+            Avançar
+        </button>
+
+        <button class="module__button button button--back">
+            <%= live_patch to: Routes.module_path(@socket, :index) do %>
+                Voltar
+            <% end %>
+        </button>
+    </div>
+<% else %>
+    <div class="modules-page">
+        <%= for module <- @modules do %>
+            <% is_this_module_locked? = is_module_locked?(@phases_in_progress, {module.id, module.order}, @modules) %>
+            <div class="modules-page__item module <%= if is_this_module_locked?, do: "module--locked" %>">
+
+                <div class="module__header">
+                    <div class="module__title">
+                        <%= module.name %>
+                    </div>
+
+                    <div class="module__score score-minimal <%= if is_this_module_locked?, do: "score-minimal--locked" %>">
+                        <div class="score-minimal__amount">
+                            <%= module.score %>
+                        </div>
+                        <div class="score-minimal__label">
+                            Pontos
+                        </div>
+                    </div>
+                </div>
+
+                <div class="module__description">
+                    <%= module.description %>
+                </div>
+
+
+                <div phx-click="<%= determine_event_for(@phases_in_progress, {module.id, module.order}, @modules) %>"
+                    phx-value-module_id="<%= module.id %>"
+                    class="module__button button <%= if is_this_module_locked?, do: "module__button--locked" %>">
+                    <%= button_text(@phases_in_progress, {module.id, module.order}, @modules) %>
+                </div>
+
+
+                <%= if is_this_module_locked? do %>
+                    <div class="module__disclaimer module__disclaimer--visible">
+                        Desbloqueie terminando o módulo anterior
+                    </div>
+                <% end %>
+            </div>
+        <% end %>
+    </div>
+<% end %>

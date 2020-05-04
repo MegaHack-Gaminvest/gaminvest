@@ -10,6 +10,7 @@ defmodule Gaminvest.ModuleContext.Phase do
     field :name, :string
     field :score, :integer
     field :content, :string
+    field :order, :integer
     belongs_to :module, Module, type: :binary_id
 
     timestamps()

@@ -4,9 +4,10 @@ defmodule Gaminvest.ModuleContext do
   """
 
   import Ecto.Query, warn: false
-  alias Gaminvest.Repo
 
+  alias Gaminvest.Repo
   alias Gaminvest.ModuleContext.{Module, Phase, HumanPhases}
+  alias Ecto.Multi
 
   defp module_phase_query do
     from m in Module,
@@ -29,17 +30,61 @@ defmodule Gaminvest.ModuleContext do
     map_with_score(modules)
   end
 
-  def get_progress_for_human(human_id) do
+  def get_phases_in_progress_for_humans(human_id) do
     phases = Repo.all(
-      from p in Phase,
-      left_join: hp in HumanPhases, as: :human_phases,
-      on: hp.phase_id == p.id,
+      from hp in HumanPhases,
+      join: p in Phase, on: hp.phase_id == p.id,
       select: %{phase: p, status: hp.status},
-      where: hp.human_id == ^human_id
+      where: hp.human_id == ^human_id and hp.status == "IN_PROGRESS"
     )
-    modules = list_modules()
-    %{phases: phases, modules: modules}
+    phases
   end
+
+  defp get_first_phase_for_module(module_id) do
+    Repo.one(from p in Phase, select: p.id, where: p.order == 1 and p.module_id == ^module_id, limit: 1)
+  end
+
+  def start_progress_for_human_in_module(module_id, human_id) do
+    phase_id = get_first_phase_for_module(module_id)
+    %HumanPhases{}
+    |> HumanPhases.changeset(%{phase_id: phase_id, human_id: human_id, status: "IN_PROGRESS"})
+    |> Repo.insert()
+  end
+
+  def get_next_phase_for_module(module_id, human_id, previous_phase_id) do
+    Repo.one(
+      from hp in HumanPhases,
+      join: previous_phase in Phase, on: hp.phase_id == previous_phase.id,
+      join: next_phase in Phase, on: next_phase.order == previous_phase.order + 1,
+      select: next_phase,
+      where: previous_phase.module_id == ^module_id and hp.human_id == ^human_id and previous_phase.id == ^previous_phase_id
+    )
+  end
+
+  def continue_progress_for_human_in_module(module_id, human_id) do
+    human_phase = Repo.one(
+      from hp in HumanPhases,
+      join: p in Phase, on: p.id == hp.phase_id,
+      join: m in Module, on: p.module_id == m.id,
+      where: hp.human_id == ^human_id and hp.status == "IN_PROGRESS",
+      select: hp
+    )
+    multi = Multi.new()
+    |> Multi.update(:complete_previous_phase, HumanPhases.changeset(human_phase, %{status: "COMPLETE"}))
+    next_phase = get_next_phase_for_module(module_id, human_phase.human_id, human_phase.phase_id)
+
+    multi = case next_phase do
+      phase ->
+        multi
+        |> Multi.insert(:add_new_phase, HumanPhases.changeset(%HumanPhases{}, %{phase_id: phase.id, human_id: human_id, status: "IN_PROGRESS"}))
+      nil ->
+        multi
+    end
+    {:ok, _} = Repo.transaction(multi)
+    {:ok, next_phase}
+  end
+
+  def get_phase!(id), do: Repo.get!(Phase, id)
 
   @doc """
   Gets a single module.

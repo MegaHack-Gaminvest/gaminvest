@@ -22,18 +22,12 @@ defmodule GaminvestWeb.Router do
 
     live "/", HomeLive
     live "/challenges", ChallengeLive
-    live "/modules", ModuleLive
+    live "/modules", ModuleLive, :index
+    live "/modules/:phase_id", ModuleLive, :show_phase
     live "/savings", SavingsLive
     live "/profile", ProfileLive
   end
 
-
-  scope "/api", GaminvestWeb.API do
-    pipe_through :api
-
-    resources "/modules", ModuleController, except: [:new, :edit]
-    resources "/humans", HumanController, except: [:new, :edit]
-  end
 
   scope "/api", GaminvestWeb.API do
     pipe_through :api
