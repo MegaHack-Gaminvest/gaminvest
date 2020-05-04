@@ -8,6 +8,7 @@ defmodule GaminvestWeb.Plugs.CreateRandomUser do
   def call(conn, _params) do
     {:ok, random_human} = HumanContext.create_human(%{
       name: Faker.Name.name(),
+      email: Faker.Internet.email(),
     })
     conn
     |> put_session(:human_id, random_human.id)
