@@ -305,3 +305,91 @@
     margin-left: auto;
   }
 }
+
+.profile-page {
+  &__hero {
+    margin-top: 24px;
+  }
+
+  &__progress {
+    margin-top: 36px;
+  }
+}
+
+.profile-hero {
+  display: flex;
+  align-items: center;
+  flex-direction: column;
+  font-family: "Source Sans Pro", sans-serif;
+
+  &__icon {
+    i {
+      color: #222648;
+    }
+  }
+
+  &__name {
+    font-size: 24px;  
+    margin-top: 12px;
+    font-weight: 600;
+    line-height: 30px;
+    
+  }
+
+  &__email {
+    font-size: 12px;
+    margin-top: 4px;
+    color: #75777A;
+    padding: 4px 24px;
+    line-height: 11px;
+    border-radius: 16px;
+    background-color: #E9EAED;
+  }
+}
+
+.profile-progress {
+  display: flex;
+  flex-direction: column;
+
+  &__title {
+    font-size: 18px;
+    color: #222648;
+    font-weight: bold;
+    font-family: "Montserrat", sans-serif;
+  }
+
+  &__details {
+    margin-top: 12px;
+  }
+}
+
+.progress-details {
+  display: flex;
+  flex-direction: column;
+
+  &__item {
+    &:not(:last-child) {
+      margin-bottom: 8px;
+    }
+  }
+}
+
+.user-progress {
+  display: flex;
+  font-size: 16px;  
+  justify-content: space-between;
+
+
+  &__name {
+    color: #9D9EA1;
+    font-weight: 600;
+    font-family: "Source Sans Pro", sans-serif;
+  }
+
+  &__value {
+    text-align: left;
+    color: #393B53;
+    font-weight: 900;
+    font-family: "Source Sans Pro", sans-serif;
+  }
+}

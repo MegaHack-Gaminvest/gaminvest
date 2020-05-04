@@ -10,9 +10,7 @@ defmodule GaminvestWeb.ProfileLive do
 
   def fetch_human(human_id), do: Gaminvest.HumanContext.get_human!(human_id)
 
-  def render(assigns) do
-    ~L"""
-    <%= @human.name %>
-    """
+  def money_format(amount) do
+    "R$ #{:erlang.float_to_binary(amount, [decimals: 2])}"
   end
 end

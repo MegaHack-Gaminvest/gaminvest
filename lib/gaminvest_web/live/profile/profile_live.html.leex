@@ -1,0 +1,54 @@
+<div class="profile-page">
+
+    <div class="profile-page__hero profile-hero">
+        <div class="profile-hero__icon">
+            <i class="fa fa-user-circle fa-8x"></i>
+        </div>
+
+        <div class="profile-hero__name">
+            <%= @human.name %>
+        </div>
+
+        <div class="profile-hero__email">
+            <%= @human.email %>
+        </div>
+    </div>
+
+    <div class="profile-page__progress profile-progress">
+        <div class="profile-progress__title">
+            Progresso
+        </div>
+
+        <div class="profile-progress__details progress-details">
+            <div class="progress-details__item user-progress">
+                <div class="user-progress__name">
+                    Pontuação
+                </div>
+
+                <div class="user-progress__value">
+                    <%= @human.points.points %>
+                </div>
+            </div>
+
+            <div class="progress-details__item user-progress">
+                <div class="user-progress__name">
+                    Módulos Completos
+                </div>
+
+                <div class="user-progress__value">
+                    1/10
+                </div>
+            </div>
+
+            <div class="progress-details__item user-progress">
+                <div class="user-progress__name">
+                    Total convertido
+                </div>
+
+                <div class="user-progress__value">
+                    <%= money_format(@human.savings.amount) %>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
