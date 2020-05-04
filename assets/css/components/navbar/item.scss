@@ -1,0 +1,35 @@
+.navbar-item {
+    display: flex;
+    text-align: center;
+    flex-direction: column;
+  
+    &--selected & {
+      &__icon {
+        i {
+          color: #393b53;
+        }
+      }
+  
+      &__name {
+        color: #393b53;
+        font-weight: 600;
+        font-family: "Source Sans Pro", sans-serif;
+      }
+    }
+  
+    &__icon {
+      line-height: 1;
+      margin-bottom: 4px;
+  
+      i {
+        color: #9d9ea1;
+      }
+    }
+  
+    &__name {
+      font-size: 12px;
+      color: #9d9ea1;
+      font-weight: 600;
+      font-family: "Source Sans Pro", sans-serif;
+    }
+  }

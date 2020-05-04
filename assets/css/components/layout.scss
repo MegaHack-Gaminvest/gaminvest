@@ -1,0 +1,23 @@
+.layout {
+    height: 100vh;
+    display: grid;
+    grid-template-columns: 24px auto 24px;
+    grid-template-rows: 80px auto 80px;
+    grid-template-areas:
+      "header header header"
+      ". main ."
+      "navbar navbar navbar";
+  
+    &__header {
+      grid-area: header;
+    }
+  
+    &__navbar {
+      grid-area: navbar;
+    }
+  
+    &__main {
+      grid-area: main;
+      overflow-y: auto;
+    }
+  }

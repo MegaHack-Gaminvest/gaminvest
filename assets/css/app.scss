@@ -1,22 +1,8 @@
 /* This file is for your main application css. */
 @import "./phoenix.css";
 
-@import url("https://fonts.googleapis.com/css2?family=Montserrat:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap");
-
-@import url("https://fonts.googleapis.com/css2?family=Source+Sans+Pro:wght@200;300;400;600;700;900&display=swap");
-
-/** Resets **/
-body {
-  margin: 0;
-  padding: 0;
-  line-height: 1em;
-}
-
-main {
-  margin: 0;
-  width: 100vw;
-  height: 100vh;
-}
+@import "./commons";
+@import "./components";
 
 .card {
   padding: 16px;
@@ -30,106 +16,6 @@ main {
     &:not(:first-child) {
       margin-top: 16px;
     }
-  }
-}
-
-.layout {
-  height: 100vh;
-  display: grid;
-  grid-template-columns: 24px auto 24px;
-  grid-template-rows: 80px auto 80px;
-  grid-template-areas:
-    "header header header"
-    ". main ."
-    "navbar navbar navbar";
-
-  &__header {
-    grid-area: header;
-  }
-
-  &__navbar {
-    grid-area: navbar;
-  }
-
-  &__main {
-    grid-area: main;
-    overflow-y: auto;
-  }
-}
-
-/* Alerts and form errors */
-.navbar {
-  display: grid;
-  grid-template-rows: auto;
-  grid-template-areas: ". content .";
-  grid-template-columns: 24px auto 24px;
-  box-shadow: 0px 0px 25px rgba(0, 0, 0, 0.15);
-
-  &__content {
-    flex: 1;
-    display: flex;
-    grid-area: content;
-    justify-content: space-around;
-  }
-
-  &__item {
-    align-self: center;
-  }
-}
-
-.navbar-item {
-  display: flex;
-  text-align: center;
-  flex-direction: column;
-
-  &--selected & {
-    &__icon {
-      i {
-        color: #393b53;
-      }
-    }
-
-    &__name {
-      color: #393b53;
-      font-weight: 600;
-      font-family: "Source Sans Pro", sans-serif;
-    }
-  }
-
-  &__icon {
-    line-height: 1;
-    margin-bottom: 4px;
-
-    i {
-      color: #9d9ea1;
-    }
-  }
-
-  &__name {
-    font-size: 12px;
-    color: #9d9ea1;
-    font-weight: 600;
-    font-family: "Source Sans Pro", sans-serif;
-  }
-}
-
-.header {
-  display: grid;
-  grid-template-rows: auto;
-  grid-template-areas: ". content .";
-  grid-template-columns: 24px auto 24px;
-
-  &__content {
-    margin: auto;
-    grid-area: content;
-  }
-
-  &__text {
-    line-height: 1;
-    font-size: 24px;
-    font-weight: 700;
-    text-align: center;
-    font-family: "Montserrat", sans-serif;
   }
 }
 
@@ -313,50 +199,4 @@ main {
   }
 }
 
-.alert {
-  padding: 15px;
-  margin-bottom: 20px;
-  border: 1px solid transparent;
-  border-radius: 4px;
-}
-.alert-info {
-  color: #31708f;
-  background-color: #d9edf7;
-  border-color: #bce8f1;
-}
-.alert-warning {
-  color: #8a6d3b;
-  background-color: #fcf8e3;
-  border-color: #faebcc;
-}
-.alert-danger {
-  color: #a94442;
-  background-color: #f2dede;
-  border-color: #ebccd1;
-}
-.alert p {
-  margin-bottom: 0;
-}
-.alert:empty {
-  display: none;
-}
 
-h1 {
-  text-align: center;
-  font-family: "Montserrat", sans-serif;
-  font-weight: bold;
-}
-
-p {
-  font-family: "Montserrat", sans-serif;
-  font-size: 18px;
-  font-weight: bold;
-}
-
-i {
-  color: #9d9ea1;
-}
-
-i:active {
-  color: #222648;
-}

@@ -1,0 +1,20 @@
+@import "./item.scss";
+
+.navbar {
+    display: grid;
+    grid-template-rows: auto;
+    grid-template-areas: ". content .";
+    grid-template-columns: 24px auto 24px;
+    box-shadow: 0px 0px 25px rgba(0, 0, 0, 0.15);
+
+    &__content {
+        flex: 1;
+        display: flex;
+        grid-area: content;
+        justify-content: space-around;
+    }
+
+    &__item {
+        align-self: center;
+    }
+}
