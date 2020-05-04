@@ -6,6 +6,7 @@ defmodule Gaminvest.Repo.Migrations.CreateModule do
       add :id, :uuid, primary_key: true
       add :name, :string
       add :description, :string
+      add :order, :bigserial
 
       timestamps()
     end

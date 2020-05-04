@@ -1,86 +1,36 @@
 <div class="modules-page">
+    <%= for module <- @progress.modules do %>
+        <% is_this_module_locked? = is_module_locked?(@progress, {module.id, module.order}) %>
+        <div class="modules-page__item module <%= if is_this_module_locked?, do: "module--locked" %>">
 
-    <div class="modules-page__item module">
-
-        <div class="module__header">
-            <div class="module__title">
-                Básico
-            </div>
-
-            <div class="module__score score-minimal">
-                <div class="score-minimal__amount">
-                    1250
+            <div class="module__header">
+                <div class="module__title">
+                    <%= module.name %>
                 </div>
-                <div class="score-minimal__label">
-                    Pontos
-                </div>
-            </div>
-        </div>
 
-        <div class="module__description">
-            Nesse módulo você irá aprender o básico de finanças pessoais. De uma forma divertida, verá como começar a sua jornada de investidor.
-        </div>
-
-        <div class="module__button button">
-            Continuar
-        </div> 
-    </div>
-
-    <div class="modules-page__item module module--locked">
-
-        <div class="module__header">
-            <div class="module__title">
-                Tipos de investimento
-            </div>
-
-            <div class="module__score score-minimal score-minimal--locked">
-                <div class="score-minimal__amount">
-                    1250
-                </div>
-                <div class="score-minimal__label">
-                    Pontos
+                <div class="module__score score-minimal <%= if is_this_module_locked?, do: "score-minimal--locked" %>">
+                    <div class="score-minimal__amount">
+                        <%= module.score %>
+                    </div>
+                    <div class="score-minimal__label">
+                        Pontos
+                    </div>
                 </div>
             </div>
-        </div>
 
-        <div class="module__description">
-            Nesse módulo você irá descobrir os diferentes tipos de investimento que existem.
-        </div>
-
-        <div class="module__button button module__button--locked">
-            Bloqueado
-        </div>
-        <div class="module__disclaimer module__disclaimer--visible">
-            Desbloqueie terminando o módulo anterior
-        </div>
-    </div>
-
-    <div class="modules-page__item module module--locked">
-
-        <div class="module__header">
-            <div class="module__title">
-                Tipos de investimento
+            <div class="module__description">
+                <%= module.description %>
             </div>
 
-            <div class="module__score score-minimal score-minimal--locked">
-                <div class="score-minimal__amount">
-                    1250
-                </div>
-                <div class="score-minimal__label">
-                    Pontos
-                </div>
+            <div class="module__button button <%= if is_this_module_locked?, do: "module__button--locked" %>">
+                <%= button_text(@progress, {module.id, module.order}) %>
             </div>
-        </div>
 
-        <div class="module__description">
-            Nesse módulo você irá descobrir os diferentes tipos de investimento que existem.
+            <%= if is_this_module_locked? do %>
+                <div class="module__disclaimer module__disclaimer--visible">
+                    Desbloqueie terminando o módulo anterior
+                </div>
+            <% end %>
         </div>
-
-        <div class="module__button button module__button--locked">
-            Bloqueado
-        </div>
-        <div class="module__disclaimer module__disclaimer--visible">
-            Desbloqueie terminando o módulo anterior
-        </div>
-    </div>
+    <% end %>
 </div>

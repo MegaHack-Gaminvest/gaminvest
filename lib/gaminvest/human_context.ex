@@ -39,7 +39,8 @@ defmodule Gaminvest.HumanContext do
     Repo.one!(
       from h in Human,
       left_join: p in assoc(h, :savings),
-      where: h.id == ^id, preload: [savings: p]
+      left_join: po in assoc(h, :points),
+      where: h.id == ^id, preload: [savings: p, points: po]
     )
   end
 
@@ -63,7 +64,11 @@ defmodule Gaminvest.HumanContext do
 
     savings = Ecto.build_assoc(human, :savings, %{amount: 1000.0})
     Repo.insert(savings)
-    {:ok, %Human{human | savings: savings}}
+
+    points = Ecto.build_assoc(human, :points, %{points: 100})
+    Repo.insert(points)
+
+    {:ok, %Human{human | savings: savings, points: points}}
   end
 
   @doc """

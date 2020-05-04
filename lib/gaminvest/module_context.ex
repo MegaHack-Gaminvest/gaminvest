@@ -6,12 +6,11 @@ defmodule Gaminvest.ModuleContext do
   import Ecto.Query, warn: false
   alias Gaminvest.Repo
 
-  alias Gaminvest.ModuleContext.Module
-  alias Gaminvest.ModuleContext.Phase
+  alias Gaminvest.ModuleContext.{Module, Phase, HumanPhases}
 
   defp module_phase_query do
     from m in Module,
-    join: p in Phase,
+    join: p in Phase, as: :phase,
     on: m.id == p.module_id,
     preload: [phases: p]
   end
@@ -21,13 +20,25 @@ defmodule Gaminvest.ModuleContext do
 
   ## Examples
 
-      iex> list_module()
+      iex> list_modules()
       [%Module{}, ...]
 
   """
-  def list_module do
+  def list_modules do
     modules = Repo.all(module_phase_query())
     map_with_score(modules)
+  end
+
+  def get_progress_for_human(human_id) do
+    phases = Repo.all(
+      from p in Phase,
+      left_join: hp in HumanPhases, as: :human_phases,
+      on: hp.phase_id == p.id,
+      select: %{phase: p, status: hp.status},
+      where: hp.human_id == ^human_id
+    )
+    modules = list_modules()
+    %{phases: phases, modules: modules}
   end
 
   @doc """

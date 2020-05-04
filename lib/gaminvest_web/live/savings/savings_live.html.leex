@@ -1,0 +1,11 @@
+Points: <%= @points.points %>
+Savings: <%= money_format(@savings.amount) %>
+
+<h2>Fundos Disponíveis (<%= length(@titles) %>)</h2>
+<%= for title <- @titles do %>
+    <div>
+        <%= title.name %>
+    </div>
+<% end %>
+
+<canvas id="savings-chart" phx-hook="SavingsChart" data-savings="<%= Jason.encode! [1002.40,1004.80,1007.20,1009.60,1012.00,1014.40,1016.80,1019.20,1021.60,1024.00] %>"></canvas>

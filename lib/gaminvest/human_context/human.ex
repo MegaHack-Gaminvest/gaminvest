@@ -2,13 +2,14 @@ defmodule Gaminvest.HumanContext.Human do
   use Ecto.Schema
   import Ecto.Changeset
 
-  alias Gaminvest.HumanContext.Savings
+  alias Gaminvest.HumanContext.{Savings, Points}
 
   @primary_key {:id, :binary_id, autogenerate: true}
 
   schema "humans" do
     field :name, :string
     has_one :savings, {"human_savings", Savings}
+    has_one :points, {"human_points", Points}
 
     timestamps()
   end

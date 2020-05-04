@@ -25,6 +25,14 @@ main {
   border: 1px solid #e9eaed;
 }
 
+.modules-page {
+  &__item {
+    &:not(:first-child) {
+      margin-top: 16px;
+    }
+  }
+}
+
 .layout {
   height: 100vh;
   display: grid;

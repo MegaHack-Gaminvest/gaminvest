@@ -5,7 +5,7 @@ defmodule Gaminvest.Repo.Migrations.CreatePhase do
     create table(:phases, primary_key: false) do
       add :id, :uuid, primary_key: true
       add :name, :string
-      add :content, :string
+      add :content, :string, size: 10_000
       add :score, :integer
       add :module_id, references("modules", type: :uuid)
 

@@ -1,13 +1,19 @@
 defmodule GaminvestWeb.SavingsLive do
   use GaminvestWeb, :live_view
 
-  def mount(_params, _session, socket) do
-    {:ok, assign(socket, :page_title, "Poupança")}
+  alias Gaminvest.{HumanContext, TitleContext}
+
+  def mount(_params, %{"human_id" => human_id}, socket) do
+    human = HumanContext.get_human!(human_id)
+    socket = socket
+    |> assign(:page_title, "Poupança")
+    |> assign(:savings, human.savings)
+    |> assign(:points, human.points)
+    |> assign(:titles, TitleContext.list_titles())
+    {:ok, socket, temporary_assigns: [titles: []]}
   end
 
-  def render(assigns) do
-    ~L"""
-    
-    """
+  def money_format(amount) do
+    "R$ #{:erlang.float_to_binary(amount, [decimals: 2])}"
   end
 end

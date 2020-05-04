@@ -10,6 +10,7 @@ defmodule Gaminvest.ModuleContext.Module do
     field :description, :string
     field :name, :string
     field :score, :integer, virtual: true
+    field :order, :integer
     has_many :phases, Phase
 
     timestamps()

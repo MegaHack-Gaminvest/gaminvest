@@ -4,7 +4,6 @@ defmodule GaminvestWeb.HomeLive do
   alias Gaminvest.HumanContext
 
   def mount(_params, %{"human_id" => human_id}, socket) do
-    IO.puts("human_id: #{inspect human_id}")
     socket = socket
     |> assign(:human, fetch_human(human_id))
     |> assign(:page_title, "Home")
