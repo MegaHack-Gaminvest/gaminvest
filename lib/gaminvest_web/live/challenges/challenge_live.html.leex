@@ -1,29 +1,36 @@
 <div class="challenges-page">
-    <div class="card">
-        <div class="card-header">
-            <h2><%= @daily_challenge.title %></h2>
+
+    <div class="challeges-page__highlight highlighted-challenge">
+        <div class="highlighted-challenge__title">
+            <%= @daily_challenge.title %>
         </div>
-        <div class="card-body">
+
+        <div class="highlighted-challenge__content">
             <%= raw @daily_challenge.content %>
         </div>
     </div>
 
-    <table>
-        <thead>
-            <tr>
-                <th>Index</th>
-                <th>User ID</th>
-                <th>Pontuação</th>
-            </tr>
-        </thead>
-        <tbody>
-        <%= for {%{human: %Human{id: id, name: name, points: points}}, index} <- Enum.with_index(@leaderboard_list) do %>
-            <tr id="<%= id %>" class="<%= if id == @human_id, do: "highlight" %>">
-                <td><%= index + 1 %></td>
-                <td><%= name %></td>
-                <td><%= points.points %></td>
-            </tr>
-        <% end %>
-        <tbody>
-    </table>
+    <div class="challenges-page__section page-section">
+        <div class="page-section__title">
+            Ranking
+        </div>
+
+        <div class="page-section__content challenge-ranking">
+            <%= for {%{human: %Human{id: id, name: name, points: points}}, index} <- Enum.with_index(@leaderboard_list) do %>
+                <div class="challenge-ranking__item rank-item <%= if id == @human_id, do: "rank-item--highlighted" %>">
+                    <div class="rank-item__position">
+                        <%= index + 1 %>
+                    </div>
+
+                    <div class="rank-item__name">
+                        <%= name %>
+                    </div>
+
+                    <div class="rank-item__score">
+                        <%= points.points %>
+                    </div>
+                </div>
+            <% end %>
+        </div>
+    </div>
 </div>
