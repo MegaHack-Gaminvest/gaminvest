@@ -8,6 +8,7 @@ defmodule Gaminvest.HumanContext.Human do
 
   schema "humans" do
     field :name, :string
+    field :email, :string
     has_one :savings, {"human_savings", Savings}
     has_one :points, {"human_points", Points}
 
@@ -17,8 +18,8 @@ defmodule Gaminvest.HumanContext.Human do
   @doc false
   def changeset(human, attrs) do
     human
-    |> cast(attrs, [:name])
+    |> cast(attrs, [:name, :email])
     |> cast_assoc(:savings)
-    |> validate_required([:name])
+    |> validate_required([:name, :email])
   end
 end
