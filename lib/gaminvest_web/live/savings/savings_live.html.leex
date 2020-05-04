@@ -1,11 +1,97 @@
-Points: <%= @points.points %>
-Savings: <%= money_format(@savings.amount) %>
+<div class="savings-page">
+    <div class="savings-page__overview savings-overview">
+        <div class="savings-overview__section savings-overview__section--score score-savings">
+            <div class="score-savings__label">
+                Pontos
+            </div>
 
-<h2>Fundos Disponíveis (<%= length(@titles) %>)</h2>
-<%= for title <- @titles do %>
-    <div>
-        <%= title.name %>
+            <div class="score-savings__value">
+                <%= @points.points %>
+            </div>
+
+            <div class="score-savings__convert">
+                Converter
+            </div>
+        </div>
+
+        <div class="savings-overview__divider">
+        </div>
+
+        <div class="savings-overview__section savings-overview__section--balance current-balance">
+            <div class="current-balance__label">
+                Saldo
+            </div>
+
+            <div class="current-balance__value">
+                <%= money_format(@savings.amount) %>
+            </div>
+        </div>
     </div>
-<% end %>
 
-<canvas id="savings-chart" phx-hook="SavingsChart" data-savings="<%= Jason.encode! [1002.40,1004.80,1007.20,1009.60,1012.00,1014.40,1016.80,1019.20,1021.60,1024.00] %>"></canvas>
+    <div class="savings-page__chart savings-chart">
+        <div class="savings-chart__title">
+            Ganhos da semana
+        </div>
+        
+        <div class="savings-chart__content">
+            <canvas id="savings-chart" phx-hook="SavingsChart" data-savings="<%= Jason.encode! [1002.40,1004.80,1007.20,1009.60,1012.00,1014.40,1016.80,1019.20,1021.60,1024.00] %>"></canvas>
+        </div>
+    </div>
+
+    <div class="savings-page__section savings-page__section--available investments-section">
+        <div class="investments-section__title">
+            Fundos Disponíveis (<%= length(@titles) %>)
+        </div>
+
+        <div class="investments-section__list investments-list">
+            <%= for title <- @titles do %>
+                <div class="investments-list__item investment">
+                    <div class="investment__purchases investment-purchases">
+                        <div class="investment-purchases__label">
+                            Você possui
+                        </div>
+
+                        <div class="investment-purchases__value">
+                            0
+                        </div>
+
+                        <div class="investment-purchases__button">
+                            Comprar
+                        </div>
+                    </div>
+
+                    <div class="investment__divider">
+                    </div>
+
+                    <div class="investment__content">
+                        <div class="investment__details investment-details">
+                            <div class="investment-details__name">
+                                <%= title.name %>
+                            </div>
+
+                            <div class="investment-details__price investment-price">
+                                <div class="investment-price__label">
+                                    Preço
+                                </div>
+
+                                <div class="investment-price__value">
+                                    R$ 50,00
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="investment__prize investment-prize">
+                            <div class="investment-prize__value">
+                                1250
+                            </div>
+
+                            <div class="investment-prize__type">
+                                Pontos
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            <% end %>
+        </div>
+    </div>
+</div>

@@ -379,7 +379,6 @@
   font-size: 16px;  
   justify-content: space-between;
 
-
   &__name {
     color: #9D9EA1;
     font-weight: 600;
@@ -391,5 +390,265 @@
     color: #393B53;
     font-weight: 900;
     font-family: "Source Sans Pro", sans-serif;
+  }
+}
+
+.savings-page {
+  height: 100%;
+  display: flex;
+  flex-direction: column;
+
+  &__chart {
+    margin-top: 14px;
+  }
+
+  &__section {
+    margin-top: 14px;
+  }
+}
+
+.score-savings {
+  display: flex;
+  line-height: 1;
+  align-items: center;
+  flex-direction: column;
+  font-family: "Montserrat", sans-serif;
+
+  &__label {
+    font-size: 14px;
+    font-weight: 500;
+    color: #222648;
+  }
+
+  &__value {
+    font-size: 36px;
+    font-weight: 700;
+    color: #222648;
+  }
+
+  &__convert {
+    @extend .button;
+
+    line-height: 1;
+    font-size: 11px;
+    margin-top: 12px;
+    font-weight: 600;
+    color: #9D9EA1;
+    padding: 4px 12px;
+    border-color: #e9eaed;
+
+    &:hover {
+      background-color: rgba(#9D9EA1, 0.25);
+    }
+  }
+}
+
+.current-balance {
+  display: flex;
+  line-height: 1;
+  align-self: center;
+  align-items: center;
+  flex-direction: column;
+  font-family: "Montserrat", sans-serif;
+
+  &__label {
+    font-size: 14px;
+    font-weight: 500;
+    color: #222648;
+  }
+
+  &__value {
+    font-size: 22px;
+    font-weight: 700;
+    color: #222648;
+  }
+}
+
+.savings-overview {
+  @extend .card;
+  flex-direction: row;
+
+  &__divider {
+    width: 1px;
+    box-sizing: border-box;
+    background-color: #e9eaed;
+  }
+
+  &__section {
+    flex: 1;
+
+    &--balance {
+      margin-left: 24px;
+    }
+
+    &--score {
+      margin-right: 24px;
+    }
+  }
+}
+
+.savings-chart {
+  display: flex;
+  flex-direction: column;
+
+  &__title {
+    font-size: 18px;
+    color: #222648;
+    font-weight: 700;
+    align-self: center;
+    font-family: "Montserrat", sans-serif;
+  }
+
+  &__content {
+    margin-top: 8px;
+  }
+}
+
+.investments-section {
+  display: flex;
+  flex-direction: column;
+
+  &__title {
+    font-size: 18px;
+    color: #222648;
+    font-weight: 700;
+    font-family: "Montserrat", sans-serif;
+  }
+
+  &__list {
+    margin-top: 12px;
+    margin-bottom: 12px;
+  }
+}
+
+.investments-list {
+  display: flex;
+  flex-direction: column;
+
+  &__item {
+    &:not(:last-child) {
+      margin-bottom: 12px;
+    }
+  }
+}
+
+.investment-purchases {
+  display: flex;
+  line-height: 1;
+  align-items: center;
+  flex-direction: column;
+  justify-content: center;
+  font-family: "Montserrat", sans-serif;
+
+  &__label {
+    font-size: 11px;
+    font-weight: 500;
+    color: #222648;
+    margin-bottom: 4px;
+  }
+
+  &__value {
+    font-size: 24px;
+    font-weight: 700;
+    color: #222648;
+    margin-bottom: 8px;
+  }
+
+  &__button {
+    @extend .button;
+
+    line-height: 1;
+    font-size: 11px;
+    font-weight: 600;
+    color: #9D9EA1;
+    padding: 4px 16px;
+    border-color: #e9eaed;
+
+    &:hover {
+      background-color: rgba(#9D9EA1, 0.25);
+    }
+  }
+}
+
+.investment-details {
+  display: flex;
+  flex-direction: column;
+
+  &__name {
+    font-size: 14px;
+    font-weight: 700;
+    color: #222648;
+    font-family: "Montserrat", sans-serif;
+  }
+
+  &__price {
+    margin-top: 4px;
+  }
+}
+
+.investment-price {
+  display: flex;
+  font-size: 14px;
+
+  &__label {
+    color: #9D9EA1;
+    font-weight: 700;
+    font-family: "Source Sans Pro", sans-serif;
+  }
+
+  &__value {
+    margin-left: 8px;
+    color: #393B53;
+    font-weight: 700;
+    font-family: "Montserrat", sans-serif;
+  }
+}
+
+.investment-prize {
+  display: flex;
+  flex-direction: column;
+
+  &__value {
+    font-size: 18px;
+    font-weight: 700;
+    color: #222648;
+    font-family: "Montserrat", sans-serif;
+  }
+
+  &__type {
+    font-size: 10px;
+    font-weight: 500;
+    color: #222648;
+    align-self: flex-end;
+    font-family: "Source Sans Pro", sans-serif;
+  }
+}
+
+.investment {
+  @extend .card;
+
+  padding: 24px 16px;
+  flex-direction: row;
+
+  &__purchases {
+    margin-right: 12px;
+  }
+
+  &__divider {
+    width: 1px;
+    box-sizing: border-box;
+    background-color: #e9eaed;
+  }
+
+  &__content {
+    flex: 1;
+    display: flex;
+    margin-left: 12px;
+    justify-content: space-between;
+  }
+
+  &__prize {
+    margin-left: 24px;
+    align-self: center;
   }
 }
