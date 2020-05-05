@@ -142,6 +142,8 @@
   }
 
   &__button {
+    @extend .button;
+
     width: 160px;
     text-align: center;
     align-self: center;
@@ -160,6 +162,12 @@
         }
       }
     }
+  }
+}
+
+button {
+  &.button {
+    background-color: transparent;
   }
 }
 

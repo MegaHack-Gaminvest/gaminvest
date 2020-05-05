@@ -41,12 +41,11 @@
                     <%= module.description %>
                 </div>
 
-
-                <div phx-click="<%= determine_event_for(@phases_in_progress, {module.id, module.order}, @modules) %>"
+                <button phx-click="<%= determine_event_for(@phases_in_progress, {module.id, module.order}, @modules) %>"
                     phx-value-module_id="<%= module.id %>"
                     class="module__button button <%= if is_this_module_locked?, do: "module__button--locked" %>">
                     <%= button_text(@phases_in_progress, {module.id, module.order}, @modules) %>
-                </div>
+                </button>
 
 
                 <%= if is_this_module_locked? do %>
