@@ -4,8 +4,8 @@
     display: grid;
     grid-template-rows: auto;
     grid-template-areas: ". content .";
+    grid-template-columns: 24px auto 24px;
     box-shadow: 0px 0px 25px rgba(0, 0, 0, 0.15);
-    grid-template-columns: minmax(24px, auto) minmax(414px, 1366px) minmax(24px, auto);
 
     &__content {
         flex: 1;
