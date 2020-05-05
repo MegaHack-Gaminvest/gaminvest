@@ -29,7 +29,6 @@ defmodule GaminvestWeb.ModuleLive do
 
   def has_started_module?([], _module), do: false
   def has_started_module?(phases_in_progress, {module_id, _order}) do
-    IO.inspect("HUMAN_PHASES>>>#{inspect(phases_in_progress)}")
     Enum.any?(phases_in_progress, fn %{phase: phase, status: status} -> status == "IN_PROGRESS" && phase.module_id == module_id end)
   end
 
