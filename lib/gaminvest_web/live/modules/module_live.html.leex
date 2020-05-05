@@ -1,17 +1,20 @@
 <%= if @live_action == :show_phase do %>
-    <div class="modules-page">
-        <div class="module__description">
+    <div class="module-page">
+        <div class="module-page__content">
             <%= raw @phase.content %>
         </div>
-        <button class="module__button button" phx-click="module-next" phx-value-module_id="<%= @phase.module_id %>">
-            Avançar
-        </button>
 
-        <button class="module__button button button--back">
-            <%= live_patch to: Routes.module_path(@socket, :index) do %>
-                Voltar
-            <% end %>
-        </button>
+        <div class="module-page__actions module-actions">
+            <div class="module-actions__item module-actions__item--next" phx-click="module-next" phx-value-module_id="<%= @phase.module_id %>">
+                Avançar
+            </div>
+
+            <div class="module-actions__item module-actions__item--back">
+                <%= live_patch to: Routes.module_path(@socket, :index) do %>
+                    Voltar
+                <% end %>
+            </div>
+        </div>
     </div>
 <% else %>
     <div class="modules-page">
