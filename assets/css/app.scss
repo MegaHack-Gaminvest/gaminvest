@@ -652,3 +652,58 @@
     align-self: center;
   }
 }
+
+.module-actions {
+  display: flex;
+
+  &__item {
+    @extend .button;
+
+    a {
+      text-decoration: none;
+
+      &:visited {
+        color: #30ab70;
+      }
+    }
+
+    &--next {
+      &.module-actions {
+        &__item {
+          order: 1;
+        }
+      }
+    }
+
+    &--back {
+      &.module-actions {
+        &__item {
+          border-color: #e9eaed;
+
+          a {
+            color: #9D9EA1;
+          }
+        }
+      }
+    }
+  }
+}
+
+.module-page {
+  display: flex;
+  margin-bottom: 16px;
+  flex-direction: column;
+
+  &__content {
+    font-size: 14px;
+    font-weight: 400;
+    color: #222648;
+    line-height: 1.5em;
+    font-family: "Source Sans Pro", sans-serif;
+  }
+
+  &__actions {
+    margin-top: 32px;
+    justify-content: space-evenly;
+  }
+}
